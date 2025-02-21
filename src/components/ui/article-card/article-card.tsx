@@ -1,9 +1,9 @@
 type Props = {
   title: string;
-  image: string;
+  image?: string;
   description: string;
   date: string;
-  author: string;
+  author?: string;
 };
 
 export const ArticleCard: React.FC<Props> = ({

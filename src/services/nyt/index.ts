@@ -1,16 +1,16 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { GetNYTArticles } from "@/types";
+import { GetNYTArticles, NYTGetArticlesParams } from "@/types";
 import { client, NEWS_SOURCES, PAGE_SIZE } from "@/config";
 
 const getNYTArticles = async ({
   pageParam = 1,
-}: any): Promise<GetNYTArticles> => {
+}: NYTGetArticlesParams): Promise<GetNYTArticles> => {
   const response = await client<GetNYTArticles>({
     baseURL: NEWS_SOURCES.nyt.url,
-    url: '"/svc/search/v2/articlesearch.json"',
+    url: "/svc/search/v2/articlesearch.json",
     method: "GET",
     params: {
-      apiKey: NEWS_SOURCES.nyt.apiKey,
+      "api-key": NEWS_SOURCES.nyt.apiKey,
       page: pageParam,
       q: "bitcoin", //Todo: Change this to a dynamic query
     },
@@ -18,7 +18,7 @@ const getNYTArticles = async ({
   return response.data;
 };
 
-export const useNewsApiArticles = () => {
+export const useNYTArticles = () => {
   return useInfiniteQuery<GetNYTArticles>({
     queryKey: ["NYT", "/svc/search/v2/articlesearch.json"],
     queryFn: ({ pageParam }) =>

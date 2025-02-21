@@ -97,3 +97,7 @@ export interface Meta {
   offset: number;
   time: number;
 }
+
+export interface NYTGetArticlesParams {
+  pageParam: number;
+}

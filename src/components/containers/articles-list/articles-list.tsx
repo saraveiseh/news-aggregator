@@ -5,10 +5,10 @@ import { useRef } from "react";
 type Props = {
   articles: Array<{
     title: string;
-    image: string;
+    image?: string;
     description: string;
     date: string;
-    author: string;
+    author?: string;
   }>;
 };
 

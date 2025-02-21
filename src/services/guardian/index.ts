@@ -1,41 +1,33 @@
-import {
-  useInfiniteQuery,
-  UseInfiniteQueryResult,
-} from "@tanstack/react-query";
-import axiosInstance from "../../api";
-import { NEWS_SOURCES } from "../../api/constants";
-
-interface Article {
-  title: string;
-  description: string;
-  url: string;
-}
-
-interface GuardianResponse {
-  articles: Article[];
-  nextCursor: number;
-}
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { NewsApiGetArticlesParams, GetGuardianArticles } from "@/types";
+import { client, NEWS_SOURCES, PAGE_SIZE } from "@/config";
 
 const getGuardianArticles = async ({
   pageParam = 1,
-}): Promise<GuardianResponse> => {
-  const response = await axiosInstance({
+}: NewsApiGetArticlesParams): Promise<GetGuardianArticles> => {
+  const response = await client<GetGuardianArticles>({
     baseURL: NEWS_SOURCES.guardian.url,
     url: "/search",
     method: "GET",
-    params: { apiKey: NEWS_SOURCES.guardian.apiKey, page: pageParam },
+    params: {
+      "api-key": NEWS_SOURCES.guardian.apiKey,
+      page: pageParam,
+      q: "bitcoin", //Todo: Change this to a dynamic query
+      pageSize: PAGE_SIZE,
+    },
   });
   return response.data;
 };
 
-export const useNewsApiArticles = (): UseInfiniteQueryResult<
-  GuardianResponse,
-  unknown
-> => {
-  return useInfiniteQuery<GuardianResponse, unknown>({
-    queryKey: ["guardian"],
-    queryFn: getGuardianArticles,
+export const useGuardianArticles = () => {
+  return useInfiniteQuery<GetGuardianArticles>({
+    queryKey: ["guardian", "/search"],
+    queryFn: ({ pageParam }) =>
+      getGuardianArticles({ pageParam: pageParam as number }),
     initialPageParam: 1,
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
+    getNextPageParam: (lastPage, allPages) =>
+      lastPage.response.total - allPages.length * PAGE_SIZE > 0
+        ? allPages.length + 1
+        : undefined,
   });
 };
