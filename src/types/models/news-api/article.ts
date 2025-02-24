@@ -18,7 +18,3 @@ export interface NewsApiGetArticlesResponse {
   articles: NewsApiArticle[];
   totalResults: number;
 }
-
-export interface NewsApiGetArticlesParams {
-  pageParam: number;
-}

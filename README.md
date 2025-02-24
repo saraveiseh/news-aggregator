@@ -1,50 +1,37 @@
-# React + TypeScript + Vite
+# Running the Project via Docker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+To run the project using Docker, follow these steps:
 
-Currently, two official plugins are available:
+1. **Install Docker**: Ensure Docker is installed on your machine. You can download it from [Docker's official website](https://www.docker.com/get-started).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. **Clone the Repository**:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```sh
+git clone https://github.com/yourusername/news-aggregator.git
+cd news-aggregator
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+3. **Build the Docker Image**:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```sh
+docker build -t news-aggregator:latest .
 ```
+
+4. **Run the Docker Container**:
+
+```sh
+docker run -d -p 3000:3000 news-aggregator:latest
+```
+
+5. **Access the Application**: Open your web browser and navigate to `http://localhost:3000`.
+
+6. **Stopping the Container**:
+
+```sh
+docker ps
+docker stop <container_id>
+```
+
+Replace `<container_id>` with the actual container ID from the `docker ps` command output.
+
+That's it! the project should now be running in a Docker container.

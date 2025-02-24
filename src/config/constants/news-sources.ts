@@ -1,7 +1,7 @@
 export const NEWS_SOURCES = {
   newsApi: {
     url: "https://newsapi.org",
-    apiKey: "f10844804e0d42239c3a8f53a5725530",
+    apiKey: "0bbb56c456ce4589bd3d8f7127e0d35b",
   },
   guardian: {
     url: "https://content.guardianapis.com",

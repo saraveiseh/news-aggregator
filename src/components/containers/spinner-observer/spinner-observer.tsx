@@ -1,3 +1,4 @@
+import { Loader } from "@/components/ui";
 import { useInView } from "react-intersection-observer";
 
 type Props = {
@@ -12,5 +13,9 @@ export const SpinnerObserver: React.FC<Props> = ({ onIntersect }) => {
       }
     },
   });
-  return <div ref={ref}>loading</div>;
+  return (
+    <div ref={ref} className="flex justify-center items-center">
+      <Loader />
+    </div>
+  );
 };

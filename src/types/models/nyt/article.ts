@@ -100,4 +100,8 @@ export interface Meta {
 
 export interface NYTGetArticlesParams {
   pageParam: number;
+  q?: string;
+  category?: number;
+  from?: Date;
+  to?: Date;
 }

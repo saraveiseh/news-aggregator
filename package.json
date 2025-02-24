@@ -12,10 +12,12 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.7",
     "@tanstack/react-query": "^5.66.8",
+    "@tanstack/react-query-devtools": "^5.66.9",
     "@tanstack/react-virtual": "^3.13.0",
     "axios": "^1.7.9",
     "intersection-observer": "^0.12.2",
     "react": "^19.0.0",
+    "react-datepicker": "^8.1.0",
     "react-dom": "^19.0.0",
     "react-intersection-observer": "^9.15.1",
     "react-router": "^7.2.0",

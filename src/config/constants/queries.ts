@@ -3,8 +3,8 @@ export const PAGE_SIZE = 10;
 export const CATEGORIES = [
   {
     id: 1,
-    name: "Business",
-    sources: { nyt: "Business", newsApi: "business", guardian: "business" },
+    name: "General",
+    sources: { nyt: "Front Page", newsApi: "general", guardian: "news" },
   },
   {
     id: 2,
@@ -13,8 +13,8 @@ export const CATEGORIES = [
   },
   {
     id: 3,
-    name: "General",
-    sources: { nyt: "Front Page", newsApi: "general", guardian: "news" },
+    name: "Business",
+    sources: { nyt: "Business", newsApi: "business", guardian: "business" },
   },
   {
     id: 4,
@@ -39,5 +39,21 @@ export const CATEGORIES = [
       newsApi: "technology",
       guardian: "technology",
     },
+  },
+];
+
+export const SOURCES = [
+  { label: "All", value: "all" },
+  {
+    label: "NYT",
+    value: "nyt",
+  },
+  {
+    label: "News API",
+    value: "newsApi",
+  },
+  {
+    label: "Guardian",
+    value: "guardian",
   },
 ];
