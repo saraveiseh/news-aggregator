@@ -7,7 +7,7 @@ To run the project using Docker, follow these steps:
 2. **Clone the Repository**:
 
 ```sh
-git clone https://github.com/yourusername/news-aggregator.git
+git clone https://github.com/saraveiseh/news-aggregator.git
 cd news-aggregator
 ```
 
